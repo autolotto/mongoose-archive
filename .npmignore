@@ -18,5 +18,7 @@ node_modules
 
 .idea
 .directory
+.git*
 
-dist
+src
+*.js.map

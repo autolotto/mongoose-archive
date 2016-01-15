@@ -1,0 +1,44 @@
+{
+  "name": "mongoose-archive",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Mongoose archive plugin",
+  "author": {
+    "name": "Yurij Mikhalevich",
+    "email": "0@39.yt",
+    "url": "https://39.yt/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/autolotto/mongoose-archive"
+  },
+  "bugs": {
+    "url": "https://github.com/autolotto/mongoose-archive/issues"
+  },
+  "homepage": "https://github.com/autolotto/mongoose-archive#readme",
+  "keywords": [
+    "mongoose",
+    "plugin",
+    "model",
+    "archive",
+    "delete",
+    "softdelete",
+    "find"
+  ],
+  "scripts": {
+    "build": "babel --optional runtime --source-maps -d dist/ src/",
+    "prepublish": "npm run build",
+    "test": "mocha --compilers js:babel/register --recursive src/test"
+  },
+  "main": "dist/index",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "babel-runtime": "^5.8.25"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "mongoose": "^4.0.1",
+    "bluebird": "^2.9.25",
+    "mocha": "^2.2.5"
+  }
+}
