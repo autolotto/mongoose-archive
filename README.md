@@ -10,14 +10,18 @@ documents by default.
 
 ## Description
 
-Creates `archivedAt` property with timestamp of the moment when
-document was archived.
+Adds `archive(callback)` and `restore(callback)` methods to the documents.
 
-Adds `archive(callback)` and `restore(callback)` methods.
+`archive(callback)` creates `archivedAt` property with timestamp of the moment
+when the method was called.
 
-Also patches `find`, `findOne`, `findOneAndRemove` and `findOneAndUpdate` methods
-to add `{ archivedAt: { $exists: false } }` to the query object in case condition
-for `archivedAt` wasn't specified.
+`restore(callback)` removes `archivedAt` field.
+
+Plugin also patches `find`, `findOne`, `findOneAndRemove` and `findOneAndUpdate`
+methods to add `{ archivedAt: { $exists: false } }` to the query object in case
+condition for `archivedAt` wasn't specified. This way you will not be querying
+archived documents (unless you specified archivedAt condition by yourself) as
+they were actually removed.
 
 
 ## Setup
@@ -46,4 +50,7 @@ instance.archive();
 // archived documents by specifying proper archivedAt filter
 instance.restore();
 // now the document was "restored" from archive
+
+// to query archived documents simply add { archivedAt: { $exists: true } } to your query
+Model.find().where('archivedAt').exists();
 ```
