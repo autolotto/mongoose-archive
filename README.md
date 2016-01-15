@@ -1,5 +1,7 @@
 # mongoose-archive
 
+[![NPM](https://nodei.co/npm/mongoose-archive.png?downloads=true)](https://nodei.co/npm/mongoose-archive/)
+
 [Mongoose](http://mongoosejs.com/) archive plugin.
 
 Yet another softdelete plugin, but with this one you will not be querying archived
