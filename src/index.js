@@ -11,14 +11,22 @@
 export default function (schema) {
   schema.add({ archivedAt: Date });
 
+  /**
+   * @param {Function} [cb]
+   * @returns {Promise|*}
+   */
   schema.methods.archive = function (cb) {
     this.archivedAt = new Date();
-    this.save(cb);
+    return this.save(cb);
   };
 
+  /**
+   * @param {Function} [cb]
+   * @returns {Promise|*}
+   */
   schema.methods.restore = function (cb) {
     this.archivedAt = undefined;
-    this.save(cb);
+    return this.save(cb);
   };
 
   ['find', 'findOne', 'findOneAndRemove', 'findOneAndUpdate'].forEach(method => {

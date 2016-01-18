@@ -10,12 +10,14 @@ documents by default.
 
 ## Description
 
-Adds `archive(callback)` and `restore(callback)` methods to the documents.
+Adds `archive([callback])` and `restore([callback])` methods to the documents.
+If `archive` or `restore` may be called without callback if used with Mongoose 4.x.
+In this case, they will return a Promise.
 
-`archive(callback)` creates `archivedAt` property with timestamp of the moment
+`archive([callback])` creates `archivedAt` property with timestamp of the moment
 when the method was called.
 
-`restore(callback)` removes `archivedAt` field.
+`restore([callback])` removes `archivedAt` field.
 
 Plugin also patches `find`, `findOne`, `findOneAndRemove` and `findOneAndUpdate`
 methods to add `{ archivedAt: { $exists: false } }` to the query object in case
@@ -31,6 +33,7 @@ Install
 ```bash
 npm install mongoose-archive
 ```
+
 
 ## Usage
 
